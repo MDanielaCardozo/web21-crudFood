@@ -8,7 +8,7 @@ const App = () => {
    <BrowserRouter>
    <Menu></Menu>
    <main>
-
+    
    </main>
    <Footer></Footer>
    </BrowserRouter>
