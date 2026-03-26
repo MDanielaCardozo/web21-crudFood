@@ -7,17 +7,26 @@ import Login from "./components/views/Login"
 import Administrador from "./components/views/Administrador"
 import FormularioProducto from "./components/views/Producto/FormularioProducto"
 import Error404 from "./components/views/Error404"
+import { useEffect, useState } from "react"
 
 const App = () => {
+
+  const sesionUsuario = JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
+  const [usuarioLogueado, setUsuarioLogueado] = useState(sesionUsuario);
+
+  useEffect(() => {
+  sessionStorage.setItem('usuarioKey', JSON.stringify(usuarioLogueado))
+}, [usuarioLogueado])
+
   return (
    <>
    <BrowserRouter>
-   <Menu></Menu>
+   <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado}></Menu>
    <main>
     <Routes>
       <Route path="/" element={<Home></Home>}/>
       <Route path="/detalle" element={<DetalleDeProducto></DetalleDeProducto>}/>
-      <Route path="/login" element={<Login></Login>}/>
+      <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}/>
       <Route path="/administrador" element={<Administrador></Administrador>}/>
       <Route path="/crear" element={<FormularioProducto></FormularioProducto>}/>
       <Route path="/editar/:id" element={<FormularioProducto></FormularioProducto>}/>
