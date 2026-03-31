@@ -1,8 +1,14 @@
 import { Button, Table } from "react-bootstrap"
 import { Link } from "react-router"
 import ItemProducto from "./Producto/ItemProducto"
+import productosPrueba from "../../data/productosPrueba"
 
-const Administrador = () => {
+const Administrador = ({setProductos, productos}) => {
+
+  const cargarProductosPrueba = () => {
+    setProductos(productosPrueba)
+  }
+
   return (
     <section className="container">
       <div className="d-flex justify-content-between align-items-center mt-5">
@@ -11,7 +17,7 @@ const Administrador = () => {
           <Link className="btn btn-primary me-2" to="/administrador/crear">
            <i className="bi bi-file-earmark-plus"></i>
           </Link>
-          <Button variant="info" className="text-light"><i className="bi bi-database-fill-up"></i></Button>
+          <Button variant="info" className="text-light" onClick={cargarProductosPrueba}><i className="bi bi-database-fill-up"></i></Button>
         </div>
       </div>
       <hr />
@@ -27,7 +33,9 @@ const Administrador = () => {
           </tr>
         </thead>
         <tbody>
-          <ItemProducto ></ItemProducto>
+          {
+            productos.map((itemProducto) => <ItemProducto itemProducto={itemProducto} key={itemProducto.id}></ItemProducto>)
+          }
         </tbody>
       </Table>
     </section>
