@@ -2,12 +2,37 @@ import { Button, Table } from "react-bootstrap"
 import { Link } from "react-router"
 import ItemProducto from "./Producto/ItemProducto"
 import productosPrueba from "../../data/productosPrueba"
+import { listarProductos } from "../../helpers/queries"
+import Swal from "sweetalert2"
+import { useEffect } from "react"
 
 const Administrador = ({setProductos, productos}) => {
 
   const cargarProductosPrueba = () => {
     setProductos(productosPrueba)
   }
+
+  const obtenerProductos = async () => {
+    /* 1-solicitar los datos de backend con la funcion de queries.js */
+    const respuesta = await listarProductos();
+    /* 2-verificar que los datos lleguen correctamente */
+    if(respuesta.status === 200) {
+      /* metodo json() extraer los datos de la respuesta del body */
+      const datos = await respuesta.json()
+      /* cargo los productos en el state */
+      setProductos(datos);
+    } else {
+      Swal.fire({
+        title:"Ocurrio un error",
+        text: "No se pudo obtener los productos, intentelo nuevamente",
+        icon: "error",
+      })
+    }
+  }
+
+   useEffect(() => {
+    obtenerProductos();
+  }, [])
 
   return (
     <section className="container">

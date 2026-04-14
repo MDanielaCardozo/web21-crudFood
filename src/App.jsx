@@ -29,8 +29,8 @@ const App = () => {
       <Route path="/detalle" element={<DetalleDeProducto></DetalleDeProducto>}/>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}/>
       <Route path="/administrador" element={<Administrador setProductos={setProductos} productos={productos}></Administrador>}/>
-      <Route path="/crear" element={<FormularioProducto></FormularioProducto>}/>
-      <Route path="/editar/:id" element={<FormularioProducto></FormularioProducto>}/>
+      <Route path="/crear" element={<FormularioProducto titulo="Crear Producto"></FormularioProducto>}/>
+      <Route path="/editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
       <Route path="*" element={<Error404></Error404>}/>
     </Routes>
    </main>
