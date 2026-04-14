@@ -26,6 +26,15 @@
       "descripcion_breve": "Flan casero con dulce de leche.",
       "descripcion_amplia": "Flan casero con dulce de leche y crema batida. Delicioso, ajajakakjsujdjerued.",
       "id": "haCDTfQUvZ4"
+    },
+    {
+      "nombreProducto": "Brownie con Helado",
+      "precio": "2200",
+      "imagen": "https://images.pexels.com/photos/27359377/pexels-photo-27359377.jpeg",
+      "categoria": "Postres",
+      "descripcion_breve": "Brownie de chocolate con helado de vainilla y salsa de chocolate",
+      "descripcion_amplia": "Brownie húmedo de chocolate negro con nueces, acompañado de una bola de helado de vainilla artesanal y bañado con salsa de chocolate caliente. Decorado con frutos rojos.",
+      "id": "_u-joH5pvto"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
