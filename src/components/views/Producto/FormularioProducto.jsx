@@ -1,7 +1,9 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearProducto } from "../../../helpers/queries";
+import { crearProducto, editarProducto, obtenerProductoPorID } from "../../../helpers/queries";
 import Swal from "sweetalert2";
+import { useNavigate, useParams } from "react-router";
+import { useEffect } from "react";
 
 const FormularioProducto = ({titulo}) => {
 
@@ -12,6 +14,35 @@ const FormularioProducto = ({titulo}) => {
     setValue,
     formState: { errors },
   } = useForm();
+
+  const {id} = useParams();
+
+  const navegacion = useNavigate()
+
+  const buscarProducto = async () => {
+    if (titulo === "Editar Producto") {
+      console.log(id);
+      const respuesta = await obtenerProductoPorID(id);
+      if (respuesta.status === 200) {
+        const productoBuscado = await respuesta.json();
+        console.log(productoBuscado);
+        setValue("nombreProducto", productoBuscado.nombreProducto);
+        setValue("precio", productoBuscado.precio);
+        setValue("imagen", productoBuscado.imagen);
+        setValue("descripcion_breve", productoBuscado.descripcion_breve);
+        setValue("descripcion_amplia", productoBuscado.descripcion_amplia);
+        setValue("categoria", productoBuscado.categoria);
+      } else {
+        alert("Ocurrio un error, intentelo más tarde")
+      }
+    }
+  }
+  
+  useEffect(() => {
+    if(titulo === "Editar Producto"){
+      buscarProducto()
+    }
+  }, []);
 
   const onSubmit = async(producto) => {
     console.log(producto);
@@ -26,6 +57,22 @@ const FormularioProducto = ({titulo}) => {
         reset();
       } else {
         alert("Ocurrio un error")
+      }
+    } else {
+      const respuesta = await editarProducto(id, producto)
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "Producto modificado",
+          text: `El producto ${producto.nombreProducto} se actualizo correctamente`,
+          icon: "success"
+        });
+        navegacion("/administrador");
+      } else {
+        Swal.fire({
+          title:"Ocurrio un error",
+          text: `No se pudo actualizar el ${producto.nombreProducto}`,
+          icon: "error"
+        })
       }
     }
 
