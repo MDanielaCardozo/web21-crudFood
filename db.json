@@ -2,30 +2,30 @@
   "productos": [
     {
       "nombreProducto": "Pizza Margarita Clásica",
-      "precio": 4500,
+      "precio": "5500",
+      "imagen": "https://images.pexels.com/photos/16890470/pexels-photo-16890470.jpeg",
+      "categoria": "Pizzas",
       "descripcion_breve": "Pizza tradicional con salsa de tomate, mozzarella y albahaca",
       "descripcion_amplia": "Nuestra pizza margarita artesanal hecha con masa madre, salsa de tomate casera, queso mozzarella de búfala premium y hojas frescas de albahaca. Horneada en horno de piedra para obtener ese crujiente perfecto.",
-      "categoria": "Pizzas",
-      "imagen": "https://images.pexels.com/photos/16890470/pexels-photo-16890470.jpeg",
       "id": "1029"
     },
     {
-      "id": "I6S_9FdlHn8",
-      "nombreProducto": "Pizza Veggie",
-      "precio": 4200,
-      "descripcion_breve": "Pizza vegetariana con pimientos, cebolla y aceitunas",
-      "descripcion_amplia": "Pizza con base de salsa de tomate, mozzarella, pimientos asados, cebolla morada, champiñones, aceitunas negras y un toque de orégano. Perfecta para quienes buscan una opción sin carne.",
-      "categoria": "Pizzas",
-      "imagen": "https://images.pexels.com/photos/33706262/pexels-photo-33706262.jpeg"
-    },
-    {
       "nombreProducto": "Flan Casero",
-      "precio": "3000",
-      "imagen": "https://images.pexels.com/photos/4109999/pexels-photo-4109999.jpeg",
+      "precio": "3500",
+      "imagen": "https://images.pexels.com/photos/34520970/pexels-photo-34520970.jpeg",
       "categoria": "Postres",
       "descripcion_breve": "Flan casero con dulce de leche.",
       "descripcion_amplia": "Flan casero con dulce de leche y crema batida. Delicioso, ajajakakjsujdjerued.",
       "id": "haCDTfQUvZ4"
+    },
+    {
+      "id": "t3W3fReLd80",
+      "nombreProducto": "Limonada Fresca",
+      "precio": 1200,
+      "descripcion_breve": "Limonada natural con hierbabuena y jengibre",
+      "descripcion_amplia": "Limonada recién exprimida con hierbabuena fresca, un toque de jengibre y endulzada con miel. Refrescante y natural. 500ml.",
+      "categoria": "Bebidas",
+      "imagen": "https://images.pexels.com/photos/18223320/pexels-photo-18223320.jpeg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

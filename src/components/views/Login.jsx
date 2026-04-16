@@ -15,20 +15,19 @@ const Login = ({setUsuarioLogueado}) => {
   const navegacion = useNavigate()
 
   const onSubmit = (data) => {
-    console.log(data);
     if (
       data.email === import.meta.env.VITE_API_EMAIL &&
       data.password === import.meta.env.VITE_API_PASSWORD
     ) {
       console.log('aqui logueo al usuario');
-      setUsuarioLogueado(true)
+      setUsuarioLogueado(true);
       //redireccionar a la pagina del administrador
       Swal.fire({
         title: "Bienvenido Administrador",
         text: "Iniciaste sesion correctamente",
         icon: "success",
       });
-      navegacion("/administrador")
+      navegacion("/administrador");
     } else {
       Swal.fire({
         title: "Ocurrio un error",

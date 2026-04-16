@@ -8,6 +8,7 @@ import Administrador from "./components/views/Administrador"
 import FormularioProducto from "./components/views/Producto/FormularioProducto"
 import Error404 from "./components/views/Error404"
 import { useEffect, useState } from "react"
+import ProtectorAdmin from "./components/routes/ProtectorAdmin"
 
 const App = () => {
 
@@ -25,12 +26,17 @@ const App = () => {
    <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado}></Menu>
    <main>
     <Routes>
-      <Route path="/" element={<Home></Home>}/>
-      <Route path="/detalle" element={<DetalleDeProducto></DetalleDeProducto>}/>
-      <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}/>
-      <Route path="/administrador" element={<Administrador setProductos={setProductos} productos={productos}></Administrador>}/>
-      <Route path="/crear" element={<FormularioProducto titulo="Crear Producto"></FormularioProducto>}/>
-      <Route path="/editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/detalle" element={<DetalleDeProducto/>}/>
+      <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
+      <Route path="/administrador" element={
+        <ProtectorAdmin usuarioLogueado={usuarioLogueado}></ProtectorAdmin>
+        }
+        >
+      <Route index element={<Administrador productos={productos} setProductos={setProductos}></Administrador>}/>
+      <Route path="crear" element={<FormularioProducto titulo="Crear Producto"></FormularioProducto>}/>
+      <Route path="editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
+      </Route>
       <Route path="*" element={<Error404></Error404>}/>
     </Routes>
    </main>

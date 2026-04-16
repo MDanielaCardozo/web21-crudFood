@@ -39,7 +39,7 @@ const Administrador = ({setProductos, productos}) => {
       <div className="d-flex justify-content-between align-items-center mt-5">
         <h1 className="display-4">Productos disponibles</h1>
         <div>
-          <Link className="btn btn-primary me-2" to="/administrador/crear">
+          <Link className="btn btn-primary me-2" to="/crear">
            <i className="bi bi-file-earmark-plus"></i>
           </Link>
           <Button variant="info" className="text-light" onClick={cargarProductosPrueba}><i className="bi bi-database-fill-up"></i></Button>
@@ -59,7 +59,7 @@ const Administrador = ({setProductos, productos}) => {
         </thead>
         <tbody>
           {
-            productos.map((itemProducto) => <ItemProducto itemProducto={itemProducto} key={itemProducto.id}></ItemProducto>)
+            productos.map((itemProducto, indice) => <ItemProducto itemProducto={itemProducto} key={itemProducto.id}  fila={indice + 1} setProductos={setProductos}></ItemProducto>)
           }
         </tbody>
       </Table>
