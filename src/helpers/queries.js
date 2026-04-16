@@ -57,3 +57,16 @@ export const editarProducto = async (id, producto) => {
     }
 }
 
+export const borrarProductoAPI = async (id) => {
+    try {
+        const respuesta = await fetch(productosBackend+id, {
+            method:'DELETE'
+        })
+        console.log(respuesta);
+        return respuesta
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
